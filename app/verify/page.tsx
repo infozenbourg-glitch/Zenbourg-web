@@ -1,6 +1,5 @@
 "use client"
-
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -9,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2 } from "lucide-react"
 
-export default function VerifyForm() {
+function VerifyFormContent() {
   const router = useRouter()
   const params = useSearchParams()
   const email = params.get("email") || ""
@@ -68,5 +67,26 @@ export default function VerifyForm() {
         </CardContent>
       </Card>
     </div>
+  )
+}
+
+export default function VerifyForm() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <Card className="max-w-md w-full">
+          <CardHeader>
+            <CardTitle>Verify Your Email</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="h-6 w-6 animate-spin" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <VerifyFormContent />
+    </Suspense>
   )
 }
