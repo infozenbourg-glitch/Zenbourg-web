@@ -1,4 +1,5 @@
 // app/reset-password/page.tsx
+
 "use client"
 
 import { useState } from "react"
@@ -10,11 +11,11 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2 } from "lucide-react"
 
-interface ResetPasswordPageProps {
+export default function ResetPasswordPage({
+  searchParams,
+}: {
   searchParams: { token?: string }
-}
-
-export default function ResetPasswordPage({ searchParams }: ResetPasswordPageProps) {
+}) {
   const router = useRouter()
   const token = searchParams?.token
 
