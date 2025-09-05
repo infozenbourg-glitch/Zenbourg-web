@@ -29,10 +29,12 @@ export default function VerifyPage() {
       })
 
       if (!res.ok) throw new Error((await res.json()).message)
+
       router.push("/signin")
     } catch (err: any) {
       setError(err.message)
-      setLoading(false)
+    } finally {
+      setLoading(false) // ✅ always reset loading
     }
   }
 
@@ -57,6 +59,7 @@ export default function VerifyPage() {
               value={code}
               onChange={(e) => setCode(e.target.value)}
               required
+              placeholder="Enter your verification code"
             />
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Verify"}
