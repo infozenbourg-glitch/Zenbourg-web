@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = "force-dynamic" // 👈 important: prevents build-time prerender error
+
 import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Suspense } from "react"
