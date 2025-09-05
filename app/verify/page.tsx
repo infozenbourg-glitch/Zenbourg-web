@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Input } from "@/components/ui/input"
@@ -8,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2 } from "lucide-react"
 
-export default function VerifyPage() {
+export default function VerifyForm() {
   const router = useRouter()
   const params = useSearchParams()
   const email = params.get("email") || ""
@@ -29,12 +30,11 @@ export default function VerifyPage() {
       })
 
       if (!res.ok) throw new Error((await res.json()).message)
-
       router.push("/signin")
     } catch (err: any) {
       setError(err.message)
     } finally {
-      setLoading(false) // ✅ always reset loading
+      setLoading(false)
     }
   }
 
