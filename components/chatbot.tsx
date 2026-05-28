@@ -39,7 +39,6 @@ const services = [
   "Business Growth",
   "Shopify Development",
   "AI Tools Integration",
-  "Lead Generation",
   "Cloud Services",
   "Data Analytics",
   "Custom Solutions",

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Heart, CheckCircle, DollarSign, Eye } from "lucide-react"
+import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Heart, CheckCircle, DollarSign, Eye, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -35,14 +35,14 @@ const benefits = [
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: DollarSign,
-    title: "Cost-Effective Lead Generation",
-    description: "Lower costs, higher quality leads",
+    icon: Globe,
+    title: "Dominant Organic Search Visibility",
+    description: "Rank higher on Google to capture ready-to-buy organic traffic",
     details: [
-      "40-60% lower cost per lead vs traditional channels",
-      "Boutique fitness studio example: $3,000 spend",
-      "200,000 impressions, 4,000 clicks (2% CTR)",
-      "160 leads at $18.75 cost per lead",
+      "53% of all trackable website traffic comes from organic search",
+      "Consistent SEO efforts build long-term authority and trust",
+      "Attract high-intent visitors actively searching for your solutions",
+      "Zero ad-spend cost per click for organic search visits",
     ],
     color: "from-green-500 to-emerald-500",
   },

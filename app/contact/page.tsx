@@ -113,10 +113,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium text-lg mb-1">Call Us</h3>
-                    <p className="text-gray-600 mb-1">Main Office:</p>
+                    <p className="text-gray-600 mb-1">Phone:</p>
                     <p className="text-lg font-medium">+91 7772828027</p>
-                    <p className="text-gray-600 mt-2 mb-1">Support Line:</p>
-                    <p className="text-lg font-medium">+91 8094102789</p>
                     <p className="text-sm text-gray-500 mt-2">
                       Available Monday-Friday, 9 AM - 5 PM EST
                     </p>

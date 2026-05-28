@@ -246,9 +246,9 @@ export default function WebDevelopmentPage() {
                       <div className="flex items-start space-x-2">
                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold">Double Lead Generation</p>
+                          <p className="font-semibold">Reduced Bounce Rates</p>
                           <p className="text-sm text-gray-600 dark:text-gray-300">
-                            Strategic CTAs can turn 1% into 2% conversion rates
+                            Intuitive layouts and clear navigation keep users engaged longer
                           </p>
                         </div>
                       </div>
