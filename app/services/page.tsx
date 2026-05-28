@@ -11,7 +11,10 @@ import { getPageTextContent } from "@/lib/data/page-content-data"
 import type { ServiceData, PageTextContent } from "@/types/page-data"
 
 export default async function ServicesPage() {
-  const services: ServiceData[] = await getAllServices()
+  const allServices: ServiceData[] = await getAllServices()
+  const services: ServiceData[] = allServices.filter(
+    (service) => service.slug !== "lead-generation" && service.name.toLowerCase() !== "lead generation"
+  )
   const pageContent: PageTextContent = await getPageTextContent("services_page")
 
   const handleBookNow = (service: ServiceData) => {

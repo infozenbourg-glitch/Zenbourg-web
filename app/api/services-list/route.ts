@@ -3,7 +3,10 @@ import { getAllServices } from "@/lib/data/services-data" // Adjust path as need
 
 export async function GET() {
   try {
-    const services = await getAllServices()
+    const allServices = await getAllServices()
+    const services = allServices.filter(
+      (s) => s.slug !== "lead-generation" && s.name.toLowerCase() !== "lead generation"
+    )
     // Map to simpler structure if needed by client
     const serviceOptions = services.map((s) => ({ id: s.id, name: s.name, slug: s.slug }))
     return NextResponse.json(serviceOptions)
