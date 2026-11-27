@@ -20,7 +20,7 @@ export default function AboutPage() {
       <Section title="Who you work with" band>
         <div className="grid items-center gap-10 md:grid-cols-[340px_1fr]">
           <div className="relative aspect-[3/4] w-full max-w-[340px] overflow-hidden rounded-2xl">
-            <Image src="/work/mayank.jpg" alt="Mayank Bhayal, founder of Zenbourg" fill className="object-cover object-[center_30%]" />
+            <Image src="/work/mayank-bhayal-founder.jpg" alt="Mayank Bhayal, founder of Zenbourg" fill className="object-cover object-[center_30%]" />
           </div>
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#8b929c]">Founder</p>

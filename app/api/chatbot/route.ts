@@ -70,12 +70,24 @@ Contact: info.zenbourg@gmail.com, +91 74470 94686, or book a free 20-minute call
 Not offered: managing paid ad budgets, guaranteed search rankings, buying followers or backlinks.
 Rules: answer in the visitor's language (English or Hinglish), in at most 4 short sentences. Use only the facts above. Never invent clients, numbers, reviews, timelines or discounts. If you do not know, say so and suggest the free call. Do not ask for passwords or payment details.`
 
+// Free tier often answers 503 "high demand": try the main model twice, then the optional backup model once.
 async function askGemini(message: string): Promise<string | null> {
+  const models = [process.env.GEMINI_MODEL || "gemini-3.8-flash", process.env.GEMINI_MODEL || "gemini-3.8-flash", process.env.GEMINI_FALLBACK_MODEL]
+  for (const [i, m] of models.entries()) {
+    if (!m) continue
+    const out = await askModel(m, message)
+    if (out.text) return out.text
+    if (out.status !== 503 && out.status !== 429) return null
+    if (i === 0) await new Promise((r) => setTimeout(r, 800))
+  }
+  return null
+}
+
+async function askModel(model: string, message: string): Promise<{ text: string | null; status: number }> {
   const key = process.env.GEMINI_API_KEY
-  if (!key) return null
-  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash"
+  if (!key) return { text: null, status: 0 }
   const ctrl = new AbortController()
-  const timer = setTimeout(() => ctrl.abort(), 8000)
+  const timer = setTimeout(() => ctrl.abort(), 7000)
   try {
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: "POST",
@@ -88,15 +100,15 @@ async function askGemini(message: string): Promise<string | null> {
       }),
     })
     if (!res.ok) {
-      console.error("Gemini error", res.status, (await res.text()).slice(0, 300))
-      return null
+      console.error("Gemini error", model, res.status, (await res.text()).slice(0, 300))
+      return { text: null, status: res.status }
     }
     const data = await res.json()
     const text = (data?.candidates?.[0]?.content?.parts || []).map((p: { text?: string }) => p.text || "").join("").trim()
-    return text || null
+    return { text: text || null, status: res.status }
   } catch (e) {
     console.error("Gemini request failed", e)
-    return null
+    return { text: null, status: 0 }
   } finally {
     clearTimeout(timer)
   }

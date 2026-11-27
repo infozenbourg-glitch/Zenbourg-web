@@ -133,7 +133,7 @@ export default function HomePage() {
       {/* Founder */}
       <section className="border-t border-white/10">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 md:grid-cols-[320px_1fr] md:px-8">
-          <Image src="/work/mayank.jpg" alt="Mayank Bhayal, founder of Zenbourg" width={1086} height={1448} className="h-auto w-full max-w-[320px] rounded-2xl object-cover" />
+          <Image src="/work/mayank-bhayal-founder.jpg" alt="Mayank Bhayal, founder of Zenbourg" width={1086} height={1448} className="h-auto w-full max-w-[320px] rounded-2xl object-cover" />
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#8b929c]">Who you talk to</p>
             <h2 className={`${display.className} mt-3 text-3xl font-bold tracking-tight md:text-4xl`}>Mayank Bhayal, founder</h2>
